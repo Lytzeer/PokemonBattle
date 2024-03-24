@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Navbar from '../Components/Home/Navbar';
 import Title from '../Components/Home/Title';
+import Info from '../Components/Home/Info';
 
 export default function Home() {
     return (
@@ -9,9 +10,7 @@ export default function Home() {
             <StatusBar style="light" />
             <Navbar />
             <Title />
-            <View>
-                <Text style={styles.text}>Hello World</Text>
-            </View>
+            <Info />
         </View> 
     );
 }
