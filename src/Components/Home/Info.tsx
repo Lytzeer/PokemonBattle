@@ -35,6 +35,14 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         paddingTop: 20,
+        shadowColor: '#fff',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     mtext: {
         color: '#fff',
