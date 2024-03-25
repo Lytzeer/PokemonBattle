@@ -20,6 +20,7 @@ export default function Info() {
 const styles = StyleSheet.create({
     money_box: {
         flexDirection: 'row',
+        paddingBottom: 20,
     },
     standing_box: {
         flexDirection: 'row',
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     info_box: {
         padding: 20,
         backgroundColor: '#1a1a1a',
-        width: '80%',
+        width: '90%',
         borderRadius: 20,
     },
     box: {
