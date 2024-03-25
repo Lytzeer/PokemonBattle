@@ -1,10 +1,14 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 
 export default function Navbar() {
     return (
         <View style={styles.navbar}>
-            <Image source={require('../../assets/menu.png')} />
-            <Image source={require('../../assets/profile.png')} />
+            <TouchableOpacity>
+                <Image source={require('../../assets/menu.png')} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <Image source={require('../../assets/profile.png')} />
+            </TouchableOpacity>
         </View>
     );
 }
