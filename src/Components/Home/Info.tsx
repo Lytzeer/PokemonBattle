@@ -2,22 +2,23 @@ import { StyleSheet, View, Text } from "react-native";
 
 export default function Info() {
     return (
-        <View style={styles.box}>
-            <View style={styles.info_box}>
-                <View style={styles.money_box}>
-                    <Text style={styles.mtext}>You have:</Text>
-                    <Text style={styles.stext}>974897654 ₽</Text>
-                </View>
-                <View style={styles.standing_box}>
-                    <Text style={styles.mtext}>Your place:</Text>
-                    <Text style={styles.stext}>#1</Text>
-                </View>
+        <View style={styles.info_box}>
+            <View style={styles.money_box}>
+                <Text style={styles.mtext}>You have:</Text>
+                <Text style={styles.stext}>974897654 ₽</Text>
+            </View>
+            <View style={styles.standing_box}>
+                <Text style={styles.mtext}>Your place:</Text>
+                <Text style={styles.stext}>#1</Text>
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    text: {
+        color: '#fff',
+    },
     money_box: {
         flexDirection: 'row',
         paddingBottom: 20,
@@ -27,8 +28,10 @@ const styles = StyleSheet.create({
     },
     info_box: {
         padding: 20,
+        margin: 20,
         backgroundColor: '#1a1a1a',
         width: '90%',
+        alignSelf: 'center',
         borderRadius: 20,
     },
     box: {
