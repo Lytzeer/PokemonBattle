@@ -1,14 +1,12 @@
-import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity, Modal } from 'react-native';
+import React, {useState} from 'react';
 
 export default function Navbar() {
     return (
         <View style={styles.navbar}>
-            <TouchableOpacity>
-                <Image source={require('../../assets/menu.png')} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-                <Image source={require('../../assets/profile.png')} />
-            </TouchableOpacity>
+                <TouchableOpacity >
+                    <Image source={require('../../assets/profile.png')} />
+                </TouchableOpacity>
         </View>
     );
 }
@@ -17,7 +15,7 @@ const styles = StyleSheet.create({
     navbar: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingTop: 55,
