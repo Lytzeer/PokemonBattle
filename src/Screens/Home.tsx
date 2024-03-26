@@ -4,6 +4,7 @@ import Navbar from '../Components/Home/Navbar';
 import Title from '../Components/Home/Title';
 import Info from '../Components/Home/Info';
 import Choices from '../Components/Home/Choices';
+import Lpokemon from '../Components/Home/Lpokemon';
 
 export default function Home() {
     return (
@@ -13,6 +14,7 @@ export default function Home() {
             <Title />
             <Info />
             <Choices />
+            <Lpokemon />
             
         </View>
     );
@@ -23,11 +25,5 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#000',
     },
-    text: {
-        flex: 1,
-        color: '#fff',
-        fontSize: 17,
-        fontWeight: 'bold',
-        paddingTop: 30,
-    },
+    
 });  
