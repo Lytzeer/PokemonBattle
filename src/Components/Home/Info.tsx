@@ -1,16 +1,20 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 export default function Info() {
     return (
-        <View style={styles.info_box}>
-            <View style={styles.money_box}>
-                <Text style={styles.mtext}>You have:</Text>
-                <Text style={styles.stext}>974897654 ₽</Text>
-            </View>
-            <View style={styles.standing_box}>
-                <Text style={styles.mtext}>Your place:</Text>
-                <Text style={styles.stext}>#1</Text>
-            </View>
+        <View>
+            <TouchableOpacity>
+                <View style={styles.info_box}>
+                    <View style={styles.money_box}>
+                        <Text style={styles.mtext}>You have:</Text>
+                        <Text style={styles.stext}>974897654 ₽</Text>
+                    </View>
+                    <View style={styles.standing_box}>
+                        <Text style={styles.mtext}>Your place:</Text>
+                        <Text style={styles.stext}>#1</Text>
+                    </View>
+                </View>
+            </TouchableOpacity>
         </View>
     );
 }
