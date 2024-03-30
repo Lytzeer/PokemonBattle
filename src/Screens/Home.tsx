@@ -6,14 +6,14 @@ import Info from '../Components/Home/Info';
 import Choices from '../Components/Home/Choices';
 import Lpokemon from '../Components/Home/Lpokemon';
 
-export default function Home() {
+export default function Home(navigation) {
     return (
         <View style={styles.container}>
             <StatusBar style="light" />
             <Navbar />
             <Title />
             <Info />
-            <Choices />
+            <Choices navigation={navigation}/>
             <Lpokemon />
             
         </View>

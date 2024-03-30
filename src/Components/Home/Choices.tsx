@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
-export default function Choices() {
+export default function Choices({navigation}) {
     return(
         <View>
             <View style={styles.choices_container}>
@@ -8,7 +8,7 @@ export default function Choices() {
                     <Text style={styles.text}>Pokemon</Text>
                     <Image source={require('../../assets/pokeball.png')} style={styles.pokeball_image} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.fight_container}>
+                <TouchableOpacity style={styles.fight_container} onPress={navigation.navigate('Fight')}>
                     <Text style={styles.text}>Fight</Text>
                     <Image source={require('../../assets/fight.png')} style={styles.pokeball_image} />
                 </TouchableOpacity>
