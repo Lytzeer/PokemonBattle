@@ -4,17 +4,17 @@ export default function Choices({navigation}) {
     return(
         <View>
             <View style={styles.choices_container}>
-                <TouchableOpacity style={styles.pokemon_container}>
+                <TouchableOpacity style={styles.pokemon_container} onPress={() => navigation.navigate('Pokemon')}>
                     <Text style={styles.text}>Pokemon</Text>
                     <Image source={require('../../assets/pokeball.png')} style={styles.pokeball_image} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.fight_container} onPress={navigation.navigate('Fight')}>
+                <TouchableOpacity style={styles.fight_container} onPress={() => navigation.navigate('Fight')}>
                     <Text style={styles.text}>Fight</Text>
                     <Image source={require('../../assets/fight.png')} style={styles.pokeball_image} />
                 </TouchableOpacity>
             </View>
             <View style={styles.choices_container}>
-                <TouchableOpacity style={styles.shop_container}>
+                <TouchableOpacity style={styles.shop_container} onPress={() => navigation.navigate('Shop')}>
                     <Text style={styles.text}>Shop</Text>
                     <Image source={require('../../assets/shop.png')} style={styles.pokeball_image} />
                 </TouchableOpacity>

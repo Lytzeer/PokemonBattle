@@ -1,11 +1,11 @@
 import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 
-export default function Navbar() {
+export default function Navbar({navigation}) {
     return (
         <View style={styles.navbar}>
-                <TouchableOpacity >
-                    <Image source={require('../../assets/profile.png')} />
-                </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                <Image source={require('../../assets/back.png')} />
+            </TouchableOpacity>
         </View>
     );
 }
@@ -14,10 +14,9 @@ const styles = StyleSheet.create({
     navbar: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingTop: 55,
-        backgroundColor: '#000',
     },
 });
