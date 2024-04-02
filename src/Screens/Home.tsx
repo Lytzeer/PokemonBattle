@@ -22,7 +22,7 @@ export default function Home({navigation}) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        height: '100%',
         backgroundColor: '#000',
     },
     
