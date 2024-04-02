@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Navbar from '../Components/Home/Navbar';
 import Title from '../Components/Home/Title';
 import Info from '../Components/Home/Info';
