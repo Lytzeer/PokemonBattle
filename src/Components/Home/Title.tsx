@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Navbar() {
+export default function Navbar({title}) {
     return (
         <View>
-            <Text style={styles.maintitle}>Hi! Lytzeer 👋</Text>
+            <Text style={styles.maintitle}>{title}</Text>
             <Text style={styles.subtitle}>Welcome Back!</Text>
         </View>
     );

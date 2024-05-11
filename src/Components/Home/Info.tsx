@@ -1,17 +1,32 @@
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
-export default function Info() {
+interface InfoProps {
+    navigation: any;
+    money: number;
+    standing_position: number;
+    username: string;
+}
+
+export default function Info({ navigation, money, standing_position, username }: InfoProps) {
     return (
         <View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Classement', { username: username })}>
                 <View style={styles.info_box}>
                     <View style={styles.money_box}>
-                        <Text style={styles.mtext}>You have:</Text>
-                        <Text style={styles.stext}>974897654 ₽</Text>
+                        <Text style={styles.mtext}>
+                            You have:
+                        </Text>
+                        <Text style={styles.stext}>
+                            {money} ₽
+                        </Text>
                     </View>
                     <View style={styles.standing_box}>
-                        <Text style={styles.mtext}>Your place:</Text>
-                        <Text style={styles.stext}>#1</Text>
+                        <Text style={styles.mtext}>
+                            Your place:
+                        </Text>
+                        <Text style={styles.stext}>
+                            #{standing_position}
+                        </Text>
                     </View>
                 </View>
             </TouchableOpacity>

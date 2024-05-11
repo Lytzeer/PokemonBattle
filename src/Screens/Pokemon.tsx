@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import Navbar from "../Components/Pokemon/Navbar";
+import {NavbarFull} from "../Components/Navbar/Navbar";
 import Title from "../Components/Pokemon/Title";
 
-export default function Pokemon({navigation}) {
+export default function Pokemon({navigation, route }) {
+
+    const { username } = route.params;
+
     return (
         <View style={styles.container}>
-            <Navbar />
+            <NavbarFull username={username} navigation={navigation} />
             <Title />
             <View style={{ flexDirection: 'column'}}>
                 <View style={{ flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-evenly', padding: 20 }}>

@@ -1,9 +1,9 @@
 import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 
-export default function Navbar({navigation}) {
+export default function Navbar({navigation, username}) {
     return (
         <View style={styles.navbar}>
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Home', { username: username })}>
                 <Image source={require('../../assets/back.png')} />
             </TouchableOpacity>
         </View>

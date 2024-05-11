@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from "react-native";
 
-export default function Wild({navigation}) {
+export default function Wild({navigation,username}) {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/wild_pokemon.png')} style={styles.images}>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ChoosePokes', { username: username })}>
                     <Text style={styles.btn_text}>Wild Pokemon</Text>
                 </TouchableOpacity>
             </ImageBackground>

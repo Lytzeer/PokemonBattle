@@ -1,20 +1,23 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
-export default function Choices({navigation}) {
+export default function Choices({navigation,username}) {
+
+    console.log(username);
+
     return(
         <View>
             <View style={styles.choices_container}>
-                <TouchableOpacity style={styles.pokemon_container} onPress={() => navigation.navigate('Pokemon')}>
+                <TouchableOpacity style={styles.pokemon_container} onPress={() => navigation.navigate('Pokemon', { username: username })}>
                     <Text style={styles.text}>Pokemon</Text>
-                    <Image source={require('../../assets/pokeball.png')} style={styles.pokeball_image} />
+                    <Image source={require('../../assets/poke-ball.png')} style={styles.pokeball_image} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.fight_container} onPress={() => navigation.navigate('Fight')}>
+                <TouchableOpacity style={styles.fight_container} onPress={() => navigation.navigate('Fight', { username: username })}>
                     <Text style={styles.text}>Fight</Text>
                     <Image source={require('../../assets/fight.png')} style={styles.pokeball_image} />
                 </TouchableOpacity>
             </View>
             <View style={styles.choices_container}>
-                <TouchableOpacity style={styles.shop_container} onPress={() => navigation.navigate('Shop')}>
+                <TouchableOpacity style={styles.shop_container} onPress={() => navigation.navigate('Shop', { username: username })}>
                     <Text style={styles.text}>Shop</Text>
                     <Image source={require('../../assets/shop.png')} style={styles.pokeball_image} />
                 </TouchableOpacity>

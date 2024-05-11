@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from "react-native";
 import Navbar from "./Navbar";
 
-export default function Trainer({navigation}) {
+export default function Trainer({navigation, username}) {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/pokemon_trainer.png')} style={styles.images}>
-                <Navbar navigation={navigation} />
-                <TouchableOpacity style={styles.button}>
+                <Navbar navigation={navigation} username={username} />
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ChoosePokes', { username: username })}>
                     <Text style={styles.btn_text}>Pokemon Trainer</Text>
                 </TouchableOpacity>
             </ImageBackground>

@@ -1,18 +1,20 @@
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 
-export default function Lpokemon() {
+interface LastPokemonName {
+    name: string;
+}
+
+export default function Lpokemon({navigation, lasts, username }: { navigation:any, lasts: LastPokemonName[], username:string }) {
     return (
         <View>
             <Text style={styles.subtitle}>Your Last Pokemon</Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 20 }}>
-                <TouchableOpacity style={styles.pokemon_box}>
-                    <Image source={require('../../assets/jigglypuff.png')} style={styles.pokemon_image} />
-                    <Text style={styles.pokemon_name}>Jigglypuff</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.pokemon_box1}>
-                    <Image source={require('../../assets/bulbasaur.png')} style={styles.pokemon_image}/>
-                    <Text style={styles.pokemon_name}>Bulbasaur</Text>
-                </TouchableOpacity>
+                {lasts.map((last, index) => (
+                    <TouchableOpacity key={index} style={index % 2 === 0 ? styles.pokemon_box : styles.pokemon_box1} onPress={() => navigation.navigate('Stats', { name: last.name, username: username })}>
+                        <Image source={require('../../assets/jigglypuff.png')} style={styles.pokemon_image} />
+                        <Text style={styles.pokemon_name}>{last.name}</Text>
+                    </TouchableOpacity>
+                ))}
             </View>
         </View>
     )
