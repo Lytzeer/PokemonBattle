@@ -5,7 +5,7 @@ export default function Wild({navigation,username}) {
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/wild_pokemon.png')} style={styles.images}>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('WildPokes', { username: username })}>
-                    <Text style={styles.btn_text}>Wild Pokemon</Text>
+                    <Text style={styles.btn_text}>Safari</Text>
                 </TouchableOpacity>
             </ImageBackground>
         </View>

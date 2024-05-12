@@ -13,6 +13,7 @@ import Welcome from './src/Screens/Welcome';
 import ChoosePokes from './src/Screens/ChoosePokes';
 import Stats from './src/Screens/Stats';
 import WildPokes from './src/Screens/WildPokes';
+import Battle from './src/Screens/Battle';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ export default function App() {
         <Stack.Screen name='ChoosePokes' component={ChoosePokes} />
         <Stack.Screen name='Stats' component={Stats} />
         <Stack.Screen name='WildPokes' component={WildPokes} />
+        <Stack.Screen name='Battle' component={Battle} />
       </Stack.Navigator>
     </NavigationContainer>
   );

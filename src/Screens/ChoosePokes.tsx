@@ -8,21 +8,21 @@ const ChoosePokes = ({ navigation, route }) => {
 
     const [pokemons, setPokemons] = useState([]) as any[];
 
-    const [selected, setSelected] = useState<number[]>([]);
+    const [selected, setSelected] = useState<[][]>([]);
     const [adversary, setAdversary] = useState({
         id: 0,
         name: ""
     });
 
     const getPokemons = async () => {
-        const response = await fetch(`http://192.168.1.25:5000/user_pokemon/${username}`);
+        const response = await fetch(`http://192.168.0.34:5000/user_pokemon/${username}`);
         const data = await response.json();
         setPokemons(data);
         await getAdversary();
     }
 
     const getAdversary = async () => {
-        const response = await fetch(`http://192.168.1.25:5000/random_opponent`);
+        const response = await fetch(`http://192.168.0.34:5000/random_opponent`);
         const data = await response.json();
         console.log(data);
         setAdversary(data);
@@ -32,7 +32,9 @@ const ChoosePokes = ({ navigation, route }) => {
         getPokemons();
     }, []);
 
-    const handlePokemonSelection = (index: number) => {
+    const handlePokemonSelection = (index: []) => {
+        console.log(index);
+        console.log(selected);
         if (selected.includes(index)) {
             setSelected(selected.filter((item) => item !== index));
         } else {
@@ -60,11 +62,11 @@ const ChoosePokes = ({ navigation, route }) => {
                 <Text style={styles.title}>
                     Your team
                 </Text>
-                {pokemons.map((pokemon, index) => (
+                {pokemons.map((pokemon) => (
                     <TouchableOpacity
                         key={pokemon.id}
-                        style={[styles.pokemon, { backgroundColor: selected.includes(index) ? '#17A427' : '#333' }]}
-                        onPress={() => handlePokemonSelection(index)}
+                        style={[styles.pokemon, { backgroundColor: selected.includes(pokemon) ? '#17A427' : '#333' }]}
+                        onPress={() => handlePokemonSelection(pokemon)}
                     >
                         <Text style={{ color: '#fff', fontSize: 20 }}>{pokemon[2]}</Text>
                     </TouchableOpacity>
@@ -73,7 +75,9 @@ const ChoosePokes = ({ navigation, route }) => {
 
             <TouchableOpacity
                 style={[styles.pokemon, { backgroundColor: selected.length === 4 ? '#17A427' : '#333' }]}
-                disabled={selected.length !== 4}>
+                disabled={selected.length !== 4}
+                onPress={() => navigation.navigate('Battle', { username: username, selected: selected, adversary: adversary })}
+                >
                 <Text style={{ color: '#fff', fontSize: 20 }}>
                     {selected.length === 4 ? 'Start Fight' : `Select ${4 - selected.length} more Pokemon`}
                 </Text>
