@@ -30,7 +30,7 @@ const Profile = ({
       setError('Please fill in the field')
       return
     }
-    const route = `http://192.168.0.34:5000/user_info/${username}/${attribute}/${value}`
+    const route = `http://192.168.1.25:5000/user_info/${username}/${attribute}/${value}`
     const response = await fetch(route)
     const data = await response.json()
     console.log(data)
@@ -38,7 +38,7 @@ const Profile = ({
   }
 
   const deleteAccount = async () => {
-    const route = `http://192.168.0.34:5000/user_info/${username}/delete`
+    const route = `http://192.168.1.25:5000/user_info/${username}/delete`
     const response = await fetch(route)
     const data = await response.json()
     console.log(data)

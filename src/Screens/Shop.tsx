@@ -29,7 +29,7 @@ const Shop = ({ navigation, route }) => {
     useEffect(() => {
         const fetchShop = async () => {
             try {
-                const response = await fetch('http://192.168.0.34:5000/shop/Lytzeer');
+                const response = await fetch(`http://192.168.1.25:5000/shop/${username}`);
                 let data = await response.json();
                 data.pokeballs = data.pokeballs.map((pokeball: Pokeball) => {
                     return {
@@ -113,6 +113,7 @@ const Shop = ({ navigation, route }) => {
                         shopData.find(shop => shop.title === "Pokeballs")?.items.find(item => item.name === buyModal) ||
                         shopData.find(shop => shop.title === "Eggs")?.items.find(item => item.name === buyModal)
                     }
+                    username={username}
                 />
             }
         </View>

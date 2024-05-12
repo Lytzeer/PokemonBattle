@@ -38,7 +38,7 @@ export default function Home({ navigation, route }) {
 
     const fetchUserInfos = async () => {
         try {
-            const response = await fetch(`http://192.168.0.34:5000/user_info/${username}`);
+            const response = await fetch(`http://192.168.1.25:5000/user_info/${username}`);
             const data = await response.json();
             console.log(data);
             setUserInfos(data);

@@ -5,6 +5,7 @@ interface ModalProps {
     visible: number
     setVisible: (visible: string) => void
     data: any
+    username: string
 }
 
 const imagesTab = {
@@ -18,12 +19,14 @@ const imagesTab = {
 const Modal = ({
     visible,
     setVisible,
-    data
+    data,
+    username
 }: ModalProps) => {
 
     const [number, setNumber] = useState(1);
 
     console.log(data);
+    console.log(username);
 
     const handleNumber = (sign: string) => {
         if (sign === "+" && number < data.max_amount) {
@@ -36,7 +39,7 @@ const Modal = ({
     const handleBuy = async ({ name, price, number }: { name: string, price: number, number: number }) => {
         console.log(name, price, number);
         try {
-            const response = await fetch(`http://192.168.0.34:5000/buy/lytzeer/${name}/${number}/${price}`);
+            const response = await fetch(`http://192.168.1.25:5000/buy/${username}/${name}/${number}/${price}`);
             const data = await response.text();
             console.log(data);
         } catch (error) {

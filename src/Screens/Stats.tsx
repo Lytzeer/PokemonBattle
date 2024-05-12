@@ -48,7 +48,7 @@ const Stats = ({
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await fetch(`http://192.168.0.34:5000/pokemon_stats/${route.params.name}`);
+                const response = await fetch(`http://192.168.1.25:5000/pokemon_stats/${route.params.name}`);
                 const data = await response.json();
                 setStats(data);
             } catch (error) {

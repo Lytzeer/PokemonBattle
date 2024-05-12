@@ -15,14 +15,14 @@ const ChoosePokes = ({ navigation, route }) => {
     });
 
     const getPokemons = async () => {
-        const response = await fetch(`http://192.168.0.34:5000/user_pokemon/${username}`);
+        const response = await fetch(`http://192.168.1.25:5000/user_pokemon/${username}`);
         const data = await response.json();
         setPokemons(data);
         await getAdversary();
     }
 
     const getAdversary = async () => {
-        const response = await fetch(`http://192.168.0.34:5000/random_opponent`);
+        const response = await fetch(`http://192.168.1.25:5000/random_opponent`);
         const data = await response.json();
         console.log(data);
         setAdversary(data);

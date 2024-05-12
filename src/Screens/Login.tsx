@@ -7,7 +7,7 @@ const Login = ({ navigation }: any) => {
     const [password, setPassword] = useState<string>('')
 
     const handleLogin = async () => {
-        const response = await fetch(`http://192.168.0.34:5000/login/${username}/${password}`)
+        const response = await fetch(`http://192.168.1.25:5000/login/${username}/${password}`)
         const data = await response.json()
         console.log(data)
         if (data.message === true) {

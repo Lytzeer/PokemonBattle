@@ -10,7 +10,7 @@ const Register = ({ navigation }: any) => {
     const [error, setError] = useState<string>('')
 
     const handleRegister = async () => {
-        const response = await fetch(`http://192.168.0.34:5000/register/${username}/${password}/${confirmPassword}/${email}`)
+        const response = await fetch(`http://192.168.1.25:5000/register/${username}/${password}/${confirmPassword}/${email}`)
         const data = await response.json()
         if (data.message === true) {
             navigation.navigate('Home', { username: username })
