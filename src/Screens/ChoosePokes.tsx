@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 
 
 const ChoosePokes = ({ navigation, route }) => {
@@ -60,29 +60,31 @@ const ChoosePokes = ({ navigation, route }) => {
                     </Text>
                 </TouchableOpacity>
 
+                <TouchableOpacity
+                    style={[styles.pokemon, { backgroundColor: selected.length === 1 ? '#17A427' : '#333' }]}
+                    disabled={selected.length !== 1}
+                    onPress={() => navigation.navigate('Battle', { username: username, selected: selected[0], adversary: adversary })}
+                >
+                    <Text style={{ color: '#fff', fontSize: 20 }}>
+                        {selected.length === 1 ? 'Start Fight' : `Select ${1 - selected.length} more Pokemon`}
+                    </Text>
+                </TouchableOpacity>
                 <Text style={styles.title}>
                     Your Pokemons
                 </Text>
-                {pokemons.map((pokemon) => (
-                    <TouchableOpacity
-                        key={pokemon.id}
-                        style={[styles.pokemon, { backgroundColor: selected.includes(pokemon) ? '#17A427' : '#333' }]}
-                        onPress={() => handlePokemonSelection(pokemon)}
-                    >
-                        <Text style={{ color: '#fff', fontSize: 20 }}>{pokemon.name}</Text>
-                    </TouchableOpacity>
-                ))}
+                <FlatList
+                    data={pokemons}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity
+                            style={[styles.pokemon, { backgroundColor: selected.includes(item) ? '#17A427' : '#333' }]}
+                            onPress={() => handlePokemonSelection(item)}
+                        >
+                            <Text style={{ color: '#fff', fontSize: 20 }}>{item.name}</Text>
+                        </TouchableOpacity>
+                    )}
+                />
             </View>
-
-            <TouchableOpacity
-                style={[styles.pokemon, { backgroundColor: selected.length === 1 ? '#17A427' : '#333' }]}
-                disabled={selected.length !== 1}
-                onPress={() => navigation.navigate('Battle', { username: username, selected: selected[0], adversary: adversary })}
-                >
-                <Text style={{ color: '#fff', fontSize: 20 }}>
-                    {selected.length === 1 ? 'Start Fight' : `Select ${1 - selected.length} more Pokemon`}
-                </Text>
-            </TouchableOpacity>
         </View>
     )
 }

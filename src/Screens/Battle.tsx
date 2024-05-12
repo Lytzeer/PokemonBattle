@@ -32,7 +32,7 @@ const Battle = ({navigation,route}) => {
     const [finished, setFinished] = useState(false);
     const [winner, setWinner] = useState("");
     const handleAttack = async (move) => {
-        if (move.power === null || move.accuracy === null) {
+        if (move.power === null) {
             console.log("This move has no power or accuracy. this feature is not implemented yet");
             return;
         }else{
@@ -67,7 +67,7 @@ const Battle = ({navigation,route}) => {
                         onPress={() => handleAttack(move)}
                     
                     >
-                        <Text style={{ color: '#fff', fontSize: 20 }}>{move.name}</Text>
+                        <Text style={{ color: '#fff', fontSize: 20 }}>{move.name} {move.power}</Text>
                     </TouchableOpacity>
                 ))}
             {finished ? 

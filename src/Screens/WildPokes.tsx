@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { set } from "react-hook-form";
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
@@ -17,15 +18,12 @@ const WildPokes = ({navigation,route}) => {
         const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/battle/pokeball/${username}`);
         const data = await response.json();
         setPokeballs(data);
-        console.log(data);
-        console.log(pokeballs);
         await getAdversary();
     }
 
     const getAdversary = async () => {
         const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/random_opponent`);
         const data = await response.json();
-        console.log("Data Result",data["result"]);
         setAdversary(data);
     }
 
@@ -33,7 +31,7 @@ const WildPokes = ({navigation,route}) => {
         console.log(pokeball);
         const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/battle/${pokeball}`);
         const data = await response.json();
-        console.log(data.result);
+        console.log("Result",data.result);
         setCatched(data.result);
         if (!data.result) {
             console.log("You failed to catch the pokemon");
@@ -47,9 +45,11 @@ const WildPokes = ({navigation,route}) => {
         const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/battle/catched/${username}/${adversary.name}`);
         const data = await response.json();
         console.log(data);
+        setCatchedPokemon(data);
     }
 
     useEffect(() => {
+        setCatched(false);
         getPokeballs();
     }, []);
     return (
@@ -63,16 +63,36 @@ const WildPokes = ({navigation,route}) => {
                     {adversary.name.charAt(0).toUpperCase() + adversary.name.slice(1)}
                 </Text>
             </TouchableOpacity>
-            {pokeballs.length !== 0 ? pokeballs.map((pokeball, index) => ( console.log("Pokeball",pokeballs),
-                <TouchableOpacity
-                    key={index}
-                    style={styles.pokemon}
-                    onPress={() => catchPokemon(pokeball.name)}
-                >
-                    <Text style={{ color: '#fff', fontSize: 20 }}>
-                        {pokeball.name.charAt(0).toUpperCase() + pokeball.name.slice(1)} x{pokeball.amount}
-                    </Text>
-                </TouchableOpacity>
+            {pokeballs.length !== 0 ? pokeballs.map((pokeball, index) => (
+                <>
+                    <TouchableOpacity
+                        key={index}
+                        style={styles.pokemon}
+                        onPress={() => catchPokemon(pokeball.name)}
+                        disabled={catched}
+                    >
+                        <Text style={{ color: '#fff', fontSize: 20 }}>
+                            {pokeball.name.charAt(0).toUpperCase() + pokeball.name.slice(1)} x{pokeball.amount}
+                        </Text>
+                    </TouchableOpacity>
+                    {catched && (
+                        <>
+                        <Text style={{ color: '#fff', fontSize: 20 }}>
+                            You caught the pokemon!
+                        </Text>
+                        <TouchableOpacity
+                            style={[styles.pokemon, { backgroundColor: "#ff0000" }]}
+                            onPress={() =>  {
+                                navigation.navigate('Home', { username: username });
+                        }}
+                        >
+                            <Text style={{ color: '#fff', fontSize: 20 }}>
+                                Return to menu
+                            </Text>
+                        </TouchableOpacity>
+                        </>
+                    )}
+                </>
             )) : 
             <>
             <Text style={{ color: '#fff', fontSize: 20 }}>
