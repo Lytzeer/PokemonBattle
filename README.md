@@ -85,3 +85,11 @@ python server/Game/api.py
 ```bash
 npm start
 ```
+
+## Warning
+
+Malheureusement certaine fonctionnalités n'ont pas pu etre finalisé et sont tout juste fonctionnelles voici une liste des fonctionnalités qui n'ont pas pu etre finalisé entièrement :
+- Le système de capture de pokémon.
+    - Vous pouvez bel est bien attraper le pokemon mais ça ne vous retire pas de pokeball.
+- Le Shop.
+    - Vous pouvez acheter des oeufs et des pokeball mais il n'y a pas d'indication d'achat.
