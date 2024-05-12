@@ -83,11 +83,7 @@ export default function Home({ navigation, route }) {
             <Lpokemon
                 username={username}
                 navigation={navigation}
-                lasts={userInfos.last_pokemon.map((pokemon) => {
-                    return {
-                        name: pokemon.name
-                    }
-                })}
+                lasts={userInfos.last_pokemon}
             />
         </View>
     );

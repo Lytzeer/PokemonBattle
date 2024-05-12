@@ -18,6 +18,7 @@ const WildPokes = ({navigation,route}) => {
         const data = await response.json();
         setPokeballs(data);
         console.log(data);
+        console.log(pokeballs);
         await getAdversary();
     }
 
@@ -62,7 +63,7 @@ const WildPokes = ({navigation,route}) => {
                     {adversary.name.charAt(0).toUpperCase() + adversary.name.slice(1)}
                 </Text>
             </TouchableOpacity>
-            {pokeballs.length == 0 ? pokeballs.map((pokeball, index) => (
+            {pokeballs.length !== 0 ? pokeballs.map((pokeball, index) => ( console.log("Pokeball",pokeballs),
                 <TouchableOpacity
                     key={index}
                     style={styles.pokemon}
@@ -75,7 +76,7 @@ const WildPokes = ({navigation,route}) => {
             )) : 
             <>
             <Text style={{ color: '#fff', fontSize: 20 }}>
-                You don't have any pokeball
+                You don't have any pokeball {pokeballs.length}
             </Text>
             <TouchableOpacity
                 style={[styles.pokemon, { backgroundColor: "#ff0000" }]}

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity, ImageSourcePropType } from 'react-native'
+import { pokeImages } from '../data/PokePics';
+import { imagesTypes } from '../data/TypePics';
 
 interface StatsProps {
     navigation: any;
@@ -48,7 +50,7 @@ const Stats = ({
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/pokemon_stats/${route.params.name}`);
+                const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/pokemon_stats/${route.params.last.name}`);
                 const data = await response.json();
                 setStats(data);
             } catch (error) {
@@ -64,7 +66,9 @@ const Stats = ({
 
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => navigation.navigate('Home', { username: route.params.username })}>
-                    <Image source={require('../assets/back.png')} />
+                    <Image 
+                    source={require('../assets/back.png')}
+                     />
                 </TouchableOpacity>
                 <Text style={styles.headerText}>
                     Stats
@@ -72,12 +76,18 @@ const Stats = ({
             </View>
 
             <Text style={{ color: '#fff', fontSize: 20, marginTop: '10%' }}>
-                {route.params.name.charAt(0).toUpperCase() + route.params.name.slice(1)}
+                {route.params.last.name}
             </Text>
 
             <View style={[styles.image, {
                 backgroundColor: colors[stats.type1] || '#000',
+                justifyContent: 'center',
+                alignItems: 'center',
             }]}>
+                <Image
+                    source={pokeImages.find(poke => poke.id === route.params.last.pokemon_id)?.url as ImageSourcePropType}
+                    style={styles.pokeImage}
+                />
             </View>
 
             <View style={styles.stats}>
@@ -105,14 +115,14 @@ const Stats = ({
                     Speed :
                     {stats.speed}
                 </Text>
-                <Text style={styles.statsText}>
-                    Type 1 :
-                    {stats.type1}
-                </Text>
-                {stats.type2 !== "" && <Text style={styles.statsText}>
-                    Type 2 :
-                    {stats.type2}
-                </Text>}
+                    <Image
+                        source={imagesTypes.find(type => type.name.toLowerCase() === stats.type1)?.url as ImageSourcePropType}
+                    />
+                    {stats.type2 !== "" &&
+                        <Image
+                            source={imagesTypes.find(type => type.name.toLowerCase() === stats.type2)?.url as ImageSourcePropType}
+                        />
+                    }
             </View>
         </View>
     )
@@ -154,5 +164,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 10,
+    },
+    pokeImage: {
+        width: 200,
+        height: 200,
     }
 })

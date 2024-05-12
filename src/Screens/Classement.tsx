@@ -19,7 +19,7 @@ const Classement = ({ navigation, route }) => {
     useEffect(() => {
         const fetchStandings = async () => {
             try {
-                const response = await fetch('http://${process.env.EXPO_PUBLIC_API_URL}:5000/standing');
+                const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/standing`);
                 let data = await response.json();
                 data = data.map((standing: StandingProps) => {
                     return {
