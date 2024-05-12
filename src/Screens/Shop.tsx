@@ -29,7 +29,7 @@ const Shop = ({ navigation, route }) => {
     useEffect(() => {
         const fetchShop = async () => {
             try {
-                const response = await fetch(`http://192.168.1.25:5000/shop/${username}`);
+                const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/shop/${username}`);
                 let data = await response.json();
                 data.pokeballs = data.pokeballs.map((pokeball: Pokeball) => {
                     return {

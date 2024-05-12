@@ -38,7 +38,7 @@ export default function Home({ navigation, route }) {
 
     const fetchUserInfos = async () => {
         try {
-            const response = await fetch(`http://192.168.1.25:5000/user_info/${username}`);
+            const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/user_info/${username}`);
             const data = await response.json();
             console.log(data);
             setUserInfos(data);
@@ -55,7 +55,7 @@ export default function Home({ navigation, route }) {
     if (isLoading) {
         return (
             <View>
-                <Text>Loading...</Text>
+                <Text>Loading... Home</Text>
             </View>
         )
     }

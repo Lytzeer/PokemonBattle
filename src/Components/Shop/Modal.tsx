@@ -39,7 +39,7 @@ const Modal = ({
     const handleBuy = async ({ name, price, number }: { name: string, price: number, number: number }) => {
         console.log(name, price, number);
         try {
-            const response = await fetch(`http://192.168.1.25:5000/buy/${username}/${name}/${number}/${price}`);
+            const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/buy/${username}/${name}/${number}/${price}`);
             const data = await response.text();
             console.log(data);
         } catch (error) {

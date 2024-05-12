@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
-const WildPokes = ({route}) => {
+const WildPokes = ({navigation,route}) => {
     const { username } = route.params;
     console.log("WildPokes",username);
 
@@ -14,7 +14,7 @@ const WildPokes = ({route}) => {
     });
     const getPokeballs = async () => {
         console.log(username);
-        const response = await fetch(`http://192.168.1.25:5000/battle/pokeball/${username}`);
+        const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/battle/pokeball/${username}`);
         const data = await response.json();
         setPokeballs(data);
         console.log(data);
@@ -22,7 +22,7 @@ const WildPokes = ({route}) => {
     }
 
     const getAdversary = async () => {
-        const response = await fetch(`http://192.168.1.25:5000/random_opponent`);
+        const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/random_opponent`);
         const data = await response.json();
         console.log("Data Result",data["result"]);
         setAdversary(data);
@@ -30,7 +30,7 @@ const WildPokes = ({route}) => {
 
     const catchPokemon = async (pokeball: string) => {
         console.log(pokeball);
-        const response = await fetch(`http://192.168.1.25:5000/battle/${pokeball}`);
+        const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/battle/${pokeball}`);
         const data = await response.json();
         console.log(data.result);
         setCatched(data.result);
@@ -43,7 +43,7 @@ const WildPokes = ({route}) => {
     }
 
     const catchedPoke = async () => {
-        const response = await fetch(`http://192.168.1.25:5000/battle/catched/${username}/${adversary.name}`);
+        const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/battle/catched/${username}/${adversary.name}`);
         const data = await response.json();
         console.log(data);
     }
@@ -62,7 +62,7 @@ const WildPokes = ({route}) => {
                     {adversary.name.charAt(0).toUpperCase() + adversary.name.slice(1)}
                 </Text>
             </TouchableOpacity>
-            {pokeballs.map((pokeball, index) => (
+            {pokeballs.length == 0 ? pokeballs.map((pokeball, index) => (
                 <TouchableOpacity
                     key={index}
                     style={styles.pokemon}
@@ -72,7 +72,21 @@ const WildPokes = ({route}) => {
                         {pokeball.name.charAt(0).toUpperCase() + pokeball.name.slice(1)} x{pokeball.amount}
                     </Text>
                 </TouchableOpacity>
-            ))}
+            )) : 
+            <>
+            <Text style={{ color: '#fff', fontSize: 20 }}>
+                You don't have any pokeball
+            </Text>
+            <TouchableOpacity
+                style={[styles.pokemon, { backgroundColor: "#ff0000" }]}
+                onPress={() => navigation.navigate('Home', { username: username })}
+            >
+                <Text style={{ color: '#fff', fontSize: 20 }}>
+                    Return to menu
+                </Text>
+            </TouchableOpacity>
+            </>
+            }
         </View>
     );
 }

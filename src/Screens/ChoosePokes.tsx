@@ -15,14 +15,15 @@ const ChoosePokes = ({ navigation, route }) => {
     });
 
     const getPokemons = async () => {
-        const response = await fetch(`http://192.168.0.34:5000/user_pokemon/${username}`);
+        const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/user_pokemon/${username}`);
         const data = await response.json();
+        console.log("Pokemons",data);
         setPokemons(data);
         await getAdversary();
     }
 
     const getAdversary = async () => {
-        const response = await fetch(`http://192.168.0.34:5000/random_opponent`);
+        const response = await fetch(`http://${process.env.EXPO_PUBLIC_API_URL}:5000/random_opponent`);
         const data = await response.json();
         console.log(data);
         setAdversary(data);
@@ -68,18 +69,18 @@ const ChoosePokes = ({ navigation, route }) => {
                         style={[styles.pokemon, { backgroundColor: selected.includes(pokemon) ? '#17A427' : '#333' }]}
                         onPress={() => handlePokemonSelection(pokemon)}
                     >
-                        <Text style={{ color: '#fff', fontSize: 20 }}>{pokemon[2]}</Text>
+                        <Text style={{ color: '#fff', fontSize: 20 }}>{pokemon.name}</Text>
                     </TouchableOpacity>
                 ))}
             </View>
 
             <TouchableOpacity
                 style={[styles.pokemon, { backgroundColor: selected.length === 4 ? '#17A427' : '#333' }]}
-                disabled={selected.length !== 4}
-                onPress={() => navigation.navigate('Battle', { username: username, selected: selected, adversary: adversary })}
+                disabled={selected.length !== 1}
+                onPress={() => navigation.navigate('Battle', { username: username, selected: selected[0], adversary: adversary })}
                 >
                 <Text style={{ color: '#fff', fontSize: 20 }}>
-                    {selected.length === 4 ? 'Start Fight' : `Select ${4 - selected.length} more Pokemon`}
+                    {selected.length === 1 ? 'Start Fight' : `Select ${1 - selected.length} more Pokemon`}
                 </Text>
             </TouchableOpacity>
         </View>
