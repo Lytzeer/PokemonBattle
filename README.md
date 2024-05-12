@@ -93,3 +93,7 @@ Malheureusement certaine fonctionnalités n'ont pas pu etre finalisé et sont to
     - Vous pouvez bel est bien attraper le pokemon mais ça ne vous retire pas de pokeball.
 - Le Shop.
     - Vous pouvez acheter des oeufs et des pokeball mais il n'y a pas d'indication d'achat.
+- Le Système de combat.
+    - Si vous utilisez une attaque qui n'a pas de stat de puissance l'attaque ne fera rien.
+
+ Tout ces manque sont des améliorations qui y seront apporté.
