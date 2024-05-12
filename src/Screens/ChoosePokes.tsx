@@ -45,7 +45,7 @@ const ChoosePokes = ({ navigation, route }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={{ color: '#fff', fontSize: 20, marginTop: '10%' }}>Choose your Pokemon in order you want to use them</Text>
+            <Text style={{ color: '#fff', fontSize: 20, marginTop: '10%' }}>Select a pokemon to fight</Text>
 
             <View style={styles.pokemonContainer}>
                 <Text style={styles.title}>
@@ -61,7 +61,7 @@ const ChoosePokes = ({ navigation, route }) => {
                 </TouchableOpacity>
 
                 <Text style={styles.title}>
-                    Your team
+                    Your Pokemons
                 </Text>
                 {pokemons.map((pokemon) => (
                     <TouchableOpacity
@@ -75,7 +75,7 @@ const ChoosePokes = ({ navigation, route }) => {
             </View>
 
             <TouchableOpacity
-                style={[styles.pokemon, { backgroundColor: selected.length === 4 ? '#17A427' : '#333' }]}
+                style={[styles.pokemon, { backgroundColor: selected.length === 1 ? '#17A427' : '#333' }]}
                 disabled={selected.length !== 1}
                 onPress={() => navigation.navigate('Battle', { username: username, selected: selected[0], adversary: adversary })}
                 >
