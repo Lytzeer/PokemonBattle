@@ -63,7 +63,7 @@ EXPO_PUBLIC_API_URL="adresse_ip_de_l'api"
 docker-compose up -d
 ```
 
-8. Accédez à phpMyAdmin à l'adresse suivante : localhost:8080 et importez le [dump](https://drive.google.com/file/d/1r5CSij-bNxU4P1x48EKrmOC7E165SKBu/view?usp=sharing) de la base de données en suivant les étapes que vous voyez sur les images
+8. Accédez à phpMyAdmin à l'adresse suivante : [localhost:8080](http://localhost:8080) et importez le [dump](https://drive.google.com/file/d/1r5CSij-bNxU4P1x48EKrmOC7E165SKBu/view?usp=sharing) de la base de données en suivant les étapes que vous voyez sur les images
 - Étape 1 : Allez dans la base de donnée pokemon_battle
 ![etape 1](https://media.discordapp.net/attachments/857295238947012619/1239302728790839296/image.png?ex=66426e1b&is=66411c9b&hm=363b491a4829cfb7e2f25d3fae3a46d63d0442af2d12b329e4c8e9db47e90102&=&format=webp&quality=lossless&width=1402&height=670)
 
