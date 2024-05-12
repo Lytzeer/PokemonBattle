@@ -1,10 +1,10 @@
-# PokemonBattle
+# 🐉 PokemonBattle
 
-## Description
+## 💬 Description
 
 PokemonBattle est une application mobile de combat de Pokémon développée en React Native, avec une partie backend en Python et une base de données MariaDB.
 
-## Prérequis
+## 🛠 Prérequis
 
 Ce projet repose sur plusieurs langages :
 - Python 3.12
@@ -12,9 +12,9 @@ Ce projet repose sur plusieurs langages :
 
 Assurez vous d'avoir soit votre téléphone avec l'application Expo installé ou d'avoir Android Studio d'installé sur votre machine.
 
-Attention si vous utilisez l'application Expo sur votre téléphone il faut que le téléphone et la machine sur laquelle tourne le projet soit sur le même réseau.
+⚠️ Attention si vous utilisez l'application Expo sur votre téléphone il faut que le téléphone et la machine sur laquelle tourne le projet soit sur le même réseau. ⚠️
 
-## Fonctionnalités
+## 📦 Fonctionnalités
 
 - Gestion de compte
 - Monnaie
@@ -24,7 +24,7 @@ Attention si vous utilisez l'application Expo sur votre téléphone il faut que 
 - Capture de Pokemon
 - Système de combat Pokemon
 
-## Installation
+## 💻 Installation
 
 1. Clonez le dépôt :
 
