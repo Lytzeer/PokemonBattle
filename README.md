@@ -80,7 +80,8 @@ cd ..
 
 9. Lancez l'API :
 ```bash
-python server/Game/api.py
+cd server
+python Game/api.py
 ```
 
 10. Démarrez l'application mobile :
