@@ -60,7 +60,9 @@ EXPO_PUBLIC_API_URL="adresse_ip_de_l'api"
 
 7. Lancez les conteneurs Docker :
 ```bash
+cd server
 docker-compose up -d
+cd ..
 ```
 
 8. Accédez à phpMyAdmin à l'adresse suivante : [localhost:8080](http://localhost:8080) et importez le [dump](https://drive.google.com/file/d/1r5CSij-bNxU4P1x48EKrmOC7E165SKBu/view?usp=sharing) de la base de données en suivant les étapes que vous voyez sur les images
